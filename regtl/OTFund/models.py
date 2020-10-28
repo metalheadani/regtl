@@ -11,7 +11,7 @@ class AtgFund(models.Model):
 	picture = models.ImageField(upload_to='atgfund_product_pic/', blank=True, null=True)
 
 	def __str__(self):
-		return '{}, {}'.format(self.serial_no, self.product_name)
+		return '{}, {}'.format('Serial no: '+self.serial_no, 'Product name: '+self.product_name)
 
 
 
@@ -24,7 +24,7 @@ class AcgFund(models.Model):
 	picture = models.ImageField(upload_to='acgfund_product_pic/', blank=True, null=True)
 
 	def __str__(self):
-		return '{}, {}'.format(self.serial_no, self.product_name)
+		return '{}, {}'.format('Serial no: '+self.serial_no, 'Product name: '+self.product_name)
 
 
 class FpAndTgFund(models.Model):
@@ -36,7 +36,7 @@ class FpAndTgFund(models.Model):
 	picture = models.ImageField(upload_to='fptgfund_product_pic/', blank=True, null=True)
 
 	def __str__(self):
-		return '{}, {}'.format(self.serial_no, self.product_name)
+		return '{}, {}'.format('Serial no: '+self.serial_no, 'Product name: '+self.product_name)
 
 
 class SavingsFund(models.Model):
@@ -48,4 +48,4 @@ class SavingsFund(models.Model):
 	picture = models.ImageField(upload_to='savingsfund_product_pic/', blank=True, null=True)
 
 	def __str__(self):
-		return '{}, {}'.format(self.serial_no, self.product_name)
+		return '{}, {}'.format('Serial no: '+self.serial_no, 'Product name: '+self.product_name)

@@ -22,6 +22,9 @@ class RegtFund(models.Model):
 	condemnation_date = models.DateTimeField(default=timezone.now)
 	remarks = models.CharField(max_length=150, blank=True, null=True)
 
+	def __str__(self):
+		return '{}, {}'.format('Serial no: '+self.serial_no, 'Product name: '+self.product_name)
+
 
 class QdFund(models.Model):
 	serial_no = models.CharField(max_length=150 ,blank=False, null=False)
@@ -30,6 +33,9 @@ class QdFund(models.Model):
 	issued_to = models.CharField(max_length=150, blank=False, null=False)
 	remarks = models.CharField(max_length=150, blank=True, null=True)
 	picture = models.ImageField(upload_to='qdfund_product_pic/', blank=True, null=True)
+
+	def __str__(self):
+		return '{}, {}'.format('Serial no: '+self.serial_no, 'Product name: '+self.product_name)
 
 
 class OffrsMessFund(models.Model):
@@ -40,6 +46,9 @@ class OffrsMessFund(models.Model):
 	remarks = models.CharField(max_length=150, blank=True, null=True)
 	picture = models.ImageField(upload_to='offrs_product_pic/', blank=True, null=True)
 
+	def __str__(self):
+		return '{}, {}'.format('Serial no: '+self.serial_no, 'Product name: '+self.product_name)
+
 
 class JcoMessFund(models.Model):
 	serial_no = models.CharField(max_length=150 ,blank=False, null=False)
@@ -49,5 +58,6 @@ class JcoMessFund(models.Model):
 	remarks = models.CharField(max_length=150, blank=True, null=True)
 	picture = models.ImageField(upload_to='jco_product_pic/', blank=True, null=True)
 
-
+	def __str__(self):
+		return '{}, {}'.format('Serial no: '+self.serial_no, 'Product name: '+self.product_name)
 
