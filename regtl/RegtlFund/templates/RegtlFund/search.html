@@ -1,0 +1,131 @@
+{% load class_name %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search</title>
+</head>
+<body style="background-color:  #f3f2f2;">
+
+
+
+<div class='row title-row my-5'>
+    <div class='col-12 py-0'>
+        <h3 class='my-0 py-0'>{{ count }} results for <b>{{ query }}</b></h3>
+    </div>
+</div>
+        
+        
+{% for object in object_list %}
+    {% with object|class_name as klass %}
+      {% if klass == 'RegtFund' %}
+           <div class='row'>
+             <div class='col-12'>
+               <b> REGT Fund Item </b>- Product Name: {{ object.product_name }}  <br>Serail number: {{ object.serial_no }}  <br>Quantity: {{ object.quantity }}  <br>Balance in stock: {{ object.balance_in_stock }}  <br>Issue Date: {{ object.issue_date }} <br>Remark : {{ object.remark }}
+            </div>
+            <br>
+          </div>
+      <br>
+      {% elif klass == 'QdFund' %}
+           <div class='row'>
+             <div class='col-12'>
+                <b>QD Fund Item</b> - Product Name: {{ object.product_name }}  <br>Serail number: {{ object.serial_no }}  <br>Quantity: {{ object.quantity }}  <br>Balance in stock: {{ object.balance_in_stock }}  <br>Issue Date: {{ object.issue_date }} <br>Remark : {{ object.remark }}
+              </div>
+              <br>
+            </div>
+        <br>
+      {% elif klass == 'OffrsMessFund' %}
+           <div class='row'>
+                <div class='col-12'>
+                  <b> Officers Mess Fund Item</b> - Product Name: {{ object.product_name }}  <br>Serail number: {{ object.serial_no }}  <br>Quantity: {{ object.quantity }}  <br>Balance in stock: {{ object.balance_in_stock }}  <br>Issue Date: {{ object.issue_date }} <br>Remark : {{ object.remark }}
+                </div>
+                <br>
+            </div>
+      <br>
+      {% elif klass == 'JcoMessFund' %}
+           <div class='row'>
+                <div class='col-12'>
+                   JCO Mess Fund Item: <a href='{{ object.get_absolute_url }}'>{{ object.product_name }}</a>
+                </div>
+            <br>
+            </div>
+      <br>
+      {% elif klass == 'AtgFund' %}
+           <div class='row'>
+                <div class='col-12'>
+                  <b> ATG Fund Item</b> - Product Name: {{ object.product_name }}  <br>Serail number: {{ object.serial_no }}  <br>Quantity: {{ object.quantity }}  <br>Balance in stock: {{ object.balance_in_stock }}  <br>Issue Date: {{ object.issue_date }} <br>Remark : {{ object.remark }}
+                </div>
+            <br>
+            </div>
+      <br>
+      {% elif klass == 'AcgFund' %}
+           <div class='row'>
+                <div class='col-12'>
+                  <b> ACG Fund Item</b> - Product Name: {{ object.product_name }}  <br>Serail number: {{ object.serial_no }}  <br>Quantity: {{ object.quantity }}  <br>Balance in stock: {{ object.balance_in_stock }}  <br>Issue Date: {{ object.issue_date }} <br>Remark : {{ object.remark }}
+                </div>
+            <br>
+            </div>
+      <br>
+      {% elif klass == 'FpAndTgFund' %}
+           <div class='row'>
+                <div class='col-12'>
+                  <b> FP and TG Fund Item</b> - Product Name: {{ object.product_name }}  <br>Serail number: {{ object.serial_no }}  <br>Quantity: {{ object.quantity }}  <br>Balance in stock: {{ object.balance_in_stock }}  <br>Issue Date: {{ object.issue_date }} <br>Remark : {{ object.remark }}
+                </div>
+            <br>
+            </div>
+      <br>
+      {% elif klass == 'SavingsFund' %}
+           <div class='row'>
+                <div class='col-12'>
+                  <b>Savings Fund Item</b> - Product Name: {{ object.product_name }}  <br>Serail number: {{ object.serial_no }}  <br>Quantity: {{ object.quantity }}  <br>Balance in stock: {{ object.balance_in_stock }}  <br>Issue Date: {{ object.issue_date }} <br>Remark : {{ object.remark }}
+                </div>
+          <br>
+            </div>
+      <br>
+      {% elif klass == 'ItFund' %}
+           <div class='row'>
+                <div class='col-12'>
+                  <b> IT Fund Item</b> - Product Name: {{ object.product_name }}  <br>Serail number: {{ object.serial_no }}  <br>Quantity: {{ object.quantity }}  <br>Balance in stock: {{ object.balance_in_stock }}  <br>Issue Date: {{ object.issue_date }} <br>Remark : {{ object.remark }}
+                </div>
+            <br>
+            </div>
+      <br>
+      {% else %}
+           <div class='row'>
+             <div class='col-12 col-lg-8 offset-lg-4'>
+            <b> Others Funds</b> -  Product Name: {{ object.product_name }}  <br>Serail number: {{ object.serial_no }}  <br>Quantity: {{ object.quantity }}  <br>Balance in stock: {{ object.balance_in_stock }}  <br>Issue Date: {{ object.issue_date }} <br>Remark : {{ object.remark }}
+              <!--  <a href='{{ object.get_absolute_url }}'>{{ object }} | {{ object|class_name }}</a> -->
+            </div>
+           </div>
+        {% endif %}
+        
+    {% endwith %}
+    
+{% empty %}
+<div class='row'>
+    <div class='col-12 col-md-6 mx-auto my-5 py-5'>
+    <form method='GET' class='' action='.'>
+    
+        <div class="input-group form-group-no-border mx-auto" style="margin-bottom: 0px; font-size: 32px;">
+            <span class="input-group-addon cfe-nav" style='color:#000'>
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </span>
+            <input type="text" name="q" data-toggle="popover" data-placement="bottom" data-content="Press enter to search" class="form-control cfe-nav mt-0 py-3" placeholder="Search..." value="" style="" data-original-title="" title="" autofocus="autofocus">
+        </div>
+
+    </form>
+
+    </div>
+</div>
+{% endfor %}
+<div class='row'>
+  <div class='col-12 col-lg-8 offset-lg-4'>
+    Made with<span style="font-size:100%;color:red;">&hearts;</span>by <i>Anirudha Jain</i> for <b><i>The Indian Army</i></b>
+  </div>
+</div>
+<div class='row'>
+  <div class='col-12 col-lg-8 offset-lg-4'>
+   If there is any problem or requirement in the software: Contact - +91-8527990741
+  </div>
+</div>
+</body>
+</html>

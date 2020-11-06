@@ -20,7 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    #path('', include('RegtlFund.urls')),
+    path('', include('RegtlFund.urls')),
     #path('login/', auth_views.LoginView.as_view(), {'template_name': 'authentication/login.html'}, name='login'),
     path('admin/', admin.site.urls),
 ]

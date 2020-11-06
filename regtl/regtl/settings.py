@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'RegtlFund',
     'ITfund',
     'OTFund',
+    #'watson',
 ]
 
 SITE_ID = 1
@@ -53,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+   # 'watson.middleware.SearchContextMiddleware',
 ]
 
 ROOT_URLCONF = 'regtl.urls'
