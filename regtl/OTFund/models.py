@@ -16,7 +16,12 @@ class AtgFundManager(models.Manager):
 	             Q(return_date__icontains=query)|
 	             Q(annual_stock_taking_date__icontains=query)|
 	             Q(annual_stock_taking_date__icontains=query)|
-	             Q(remarks__icontains=query)
+	             Q(remarks__icontains=query)|
+	             Q(company_72_quantity__icontains=query)|
+	             Q(company_73_quantity__icontains=query)|
+	             Q(company_369_quantity__icontains=query)|
+	             Q(company_685PK_quantity__icontains=query)|
+	             Q(company_RHQ_quantity__icontains=query)
 	        )
             qs = qs.filter(or_lookup).distinct() # distinct() is often necessary with Q lookups
         return qs
@@ -36,7 +41,12 @@ class AcgFundManager(models.Manager):
 	             Q(return_date__icontains=query)|
 	             Q(annual_stock_taking_date__icontains=query)|
 	             Q(annual_stock_taking_date__icontains=query)|
-	             Q(remarks__icontains=query)
+	             Q(remarks__icontains=query)|
+	             Q(company_72_quantity__icontains=query)|
+	             Q(company_73_quantity__icontains=query)|
+	             Q(company_369_quantity__icontains=query)|
+	             Q(company_685PK_quantity__icontains=query)|
+	             Q(company_RHQ_quantity__icontains=query)
 	        )
             qs = qs.filter(or_lookup).distinct() # distinct() is often necessary with Q lookups
         return qs
@@ -57,13 +67,18 @@ class FpAndTgFundManager(models.Manager):
 	             Q(return_date__icontains=query)|
 	             Q(annual_stock_taking_date__icontains=query)|
 	             Q(annual_stock_taking_date__icontains=query)|
-	             Q(remarks__icontains=query)
+	             Q(remarks__icontains=query)|
+	             Q(company_72_quantity__icontains=query)|
+	             Q(company_73_quantity__icontains=query)|
+	             Q(company_369_quantity__icontains=query)|
+	             Q(company_685PK_quantity__icontains=query)|
+	             Q(company_RHQ_quantity__icontains=query)
 	        )
             qs = qs.filter(or_lookup).distinct() # distinct() is often necessary with Q lookups
         return qs
 
 
-class SavingsFundManager(models.Manager):
+class MiscFundManager(models.Manager):
     def search(self, query=None):
         qs = self.get_queryset()
         if query is not None:
@@ -77,7 +92,12 @@ class SavingsFundManager(models.Manager):
 	             Q(return_date__icontains=query)|
 	             Q(annual_stock_taking_date__icontains=query)|
 	             Q(annual_stock_taking_date__icontains=query)|
-	             Q(remarks__icontains=query)
+	             Q(remarks__icontains=query)|
+	             Q(company_72_quantity__icontains=query)|
+	             Q(company_73_quantity__icontains=query)|
+	             Q(company_369_quantity__icontains=query)|
+	             Q(company_685PK_quantity__icontains=query)|
+	             Q(company_RHQ_quantity__icontains=query)
 	        )
             qs = qs.filter(or_lookup).distinct() # distinct() is often necessary with Q lookups
         return qs
@@ -100,6 +120,11 @@ class AtgFund(models.Model):
 	return_date = models.DateTimeField(default=timezone.now)
 	annual_stock_taking_date = models.DateTimeField(default=timezone.now)
 	condemnation_date = models.DateTimeField(default=timezone.now)
+	company_72_quantity = models.IntegerField(blank=True, null=True)
+	company_73_quantity = models.IntegerField(blank=True, null=True)
+	company_369_quantity = models.IntegerField(blank=True, null=True)
+	company_685PK_quantity = models.IntegerField(blank=True, null=True)
+	company_RHQ_quantity = models.IntegerField(blank=True, null=True)
 
 	objects = AtgFundManager()
 
@@ -124,6 +149,11 @@ class AcgFund(models.Model):
 	return_date = models.DateTimeField(default=timezone.now)
 	annual_stock_taking_date = models.DateTimeField(default=timezone.now)
 	condemnation_date = models.DateTimeField(default=timezone.now)
+	company_72_quantity = models.IntegerField(blank=True, null=True)
+	company_73_quantity = models.IntegerField(blank=True, null=True)
+	company_369_quantity = models.IntegerField(blank=True, null=True)
+	company_685PK_quantity = models.IntegerField(blank=True, null=True)
+	company_RHQ_quantity = models.IntegerField(blank=True, null=True)
 
 	objects = AcgFundManager()
 
@@ -148,6 +178,11 @@ class FpAndTgFund(models.Model):
 	return_date = models.DateTimeField(default=timezone.now)
 	annual_stock_taking_date = models.DateTimeField(default=timezone.now)
 	condemnation_date = models.DateTimeField(default=timezone.now)
+	company_72_quantity = models.IntegerField(blank=True, null=True)
+	company_73_quantity = models.IntegerField(blank=True, null=True)
+	company_369_quantity = models.IntegerField(blank=True, null=True)
+	company_685PK_quantity = models.IntegerField(blank=True, null=True)
+	company_RHQ_quantity = models.IntegerField(blank=True, null=True)
 
 	objects = FpAndTgFundManager()
 
@@ -155,7 +190,7 @@ class FpAndTgFund(models.Model):
 		return '{}, {}'.format('Serial no: '+self.serial_no, 'Product name: '+self.product_name)
 
 
-class SavingsFund(models.Model):
+class MiscFund(models.Model):
 	serial_no = models.CharField(max_length=150 ,blank=False, null=False)
 	product_name = models.CharField(max_length=150, blank=False, null=False)
 	date_of_procurement = models.DateTimeField(default=timezone.now)
@@ -172,8 +207,13 @@ class SavingsFund(models.Model):
 	return_date = models.DateTimeField(default=timezone.now)
 	annual_stock_taking_date = models.DateTimeField(default=timezone.now)
 	condemnation_date = models.DateTimeField(default=timezone.now)
+	company_72_quantity = models.IntegerField(blank=True, null=True)
+	company_73_quantity = models.IntegerField(blank=True, null=True)
+	company_369_quantity = models.IntegerField(blank=True, null=True)
+	company_685PK_quantity = models.IntegerField(blank=True, null=True)
+	company_RHQ_quantity = models.IntegerField(blank=True, null=True)
 
-	objects = SavingsFundManager()
+	objects = MiscFundManager()
 
 	def __str__(self):
 		return '{}, {}'.format('Serial no: '+self.serial_no, 'Product name: '+self.product_name)

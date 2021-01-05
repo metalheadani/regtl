@@ -3,7 +3,7 @@ from django.db.models import Q
 from itertools import chain
 from django.views.generic import ListView
 from .models import *
-from OTFund.models import AtgFund, AcgFund, FpAndTgFund, SavingsFund
+from OTFund.models import AtgFund, AcgFund, FpAndTgFund, MiscFund
 from ITfund.models import ItFund
 
 def index(request):
@@ -28,14 +28,14 @@ class SearchView(ListView):
         query = request.GET.get('q', None)
         
         if query is not None:
-            regtfund_results        = RegtFund.objects.search(query)
-            qdfund_results      = QdFund.objects.search(query)
-            offfsmess_results     = OffrsMessFund.objects.search(query)
+            regtfund_results = RegtFund.objects.search(query)
+            qdfund_results = QdFund.objects.search(query)
+            offfsmess_results = OffrsMessFund.objects.search(query)
             jcomess_results = JcoMessFund.objects.search(query)
             acg_results = AcgFund.objects.search(query)
             atg_results = AtgFund.objects.search(query)
             fptg_results = FpAndTgFund.objects.search(query)
-            savings_results = SavingsFund.objects.search(query)
+            savings_results = MiscFund.objects.search(query)
             it_results = ItFund.objects.search(query)
             
             # combine querysets 

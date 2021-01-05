@@ -16,7 +16,12 @@ class ItFundManager(models.Manager):
 	             Q(return_date__icontains=query)|
 	             Q(annual_stock_taking_date__icontains=query)|
 	             Q(annual_stock_taking_date__icontains=query)|
-	             Q(remarks__icontains=query)
+	             Q(remarks__icontains=query)|
+	             Q(company_72_quantity__icontains=query)|
+	             Q(company_73_quantity__icontains=query)|
+	             Q(company_369_quantity__icontains=query)|
+	             Q(company_685PK_quantity__icontains=query)|
+	             Q(company_RHQ_quantity__icontains=query)
 	        )
             qs = qs.filter(or_lookup).distinct() # distinct() is often necessary with Q lookups
         return qs
@@ -40,6 +45,11 @@ class ItFund(models.Model):
 	return_date = models.DateTimeField(default=timezone.now)
 	annual_stock_taking_date = models.DateTimeField(default=timezone.now)
 	condemnation_date = models.DateTimeField(default=timezone.now)
+	company_72_quantity = models.IntegerField(blank=True, null=True)
+	company_73_quantity = models.IntegerField(blank=True, null=True)
+	company_369_quantity = models.IntegerField(blank=True, null=True)
+	company_685PK_quantity = models.IntegerField(blank=True, null=True)
+	company_RHQ_quantity = models.IntegerField(blank=True, null=True)
 
 	objects = ItFundManager()
 
