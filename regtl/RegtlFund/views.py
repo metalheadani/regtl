@@ -32,6 +32,10 @@ class SearchView(ListView):
             qdfund_results = QdFund.objects.search(query)
             offfsmess_results = OffrsMessFund.objects.search(query)
             jcomess_results = JcoMessFund.objects.search(query)
+            mt_results = MTFund.objects.search(query)
+            lrw_results = LRWFund.objects.search(query)
+            ot_results = OTFund.objects.search(query)
+            regtqmf_results = REGTQMFund.objects.search(query)
             acg_results = AcgFund.objects.search(query)
             atg_results = AtgFund.objects.search(query)
             fptg_results = FpAndTgFund.objects.search(query)
@@ -48,7 +52,11 @@ class SearchView(ListView):
                     atg_results,
                     fptg_results,
                     savings_results,
-                    it_results
+                    it_results,
+                    mt_results,
+                    lrw_results,
+                    ot_results,
+                    regtqmf_results,
             )        
             qs = sorted(queryset_chain, 
                         key=lambda instance: instance.pk, 

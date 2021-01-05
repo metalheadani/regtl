@@ -109,7 +109,7 @@ class JcoFundManager(models.Manager):
         return qs
 
 
-class EmptyFundManager(models.Manager):
+class MTFundManager(models.Manager):
     def search(self, query=None):
         qs = self.get_queryset()
         if query is not None:
@@ -333,7 +333,7 @@ class JcoMessFund(models.Model):
 
 
 
-class EmptyFund(models.Model):
+class MTFund(models.Model):
 	serial_no = models.CharField(max_length=150 ,blank=False, null=False)
 	product_name = models.CharField(max_length=150, blank=False, null=False)
 	purchase_date = models.DateTimeField(default=timezone.now)
@@ -356,7 +356,7 @@ class EmptyFund(models.Model):
 	company_685PK_quantity = models.IntegerField(blank=True, null=True)
 	company_RHQ_quantity = models.IntegerField(blank=True, null=True)
 
-	objects = EmptyFundManager()
+	objects = MTFundManager()
 
 	def __str__(self):
 		return '{}, {}'.format('Serial no: '+self.serial_no, 'Product name: '+self.product_name)
@@ -389,7 +389,6 @@ class LRWFund(models.Model):
 
 	def __str__(self):
 		return '{}, {}'.format('Serial no: '+self.serial_no, 'Product name: '+self.product_name)
-
 
 
 class OTFund(models.Model):

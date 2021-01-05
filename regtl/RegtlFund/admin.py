@@ -21,7 +21,7 @@ class JcoMessFundAdmin(admin.ModelAdmin):
 	search_fields = ['serial_no', 'product_name','issued_to','remarks']
 	list_display = ('serial_no','product_name','issued_to')
 
-class EmptyFundAdmin(admin.ModelAdmin):
+class MTFundAdmin(admin.ModelAdmin):
 	search_fields = ['serial_no', 'product_name','issued_to','remarks']
 	list_display = ('serial_no','product_name','issued_to')
 
@@ -45,7 +45,7 @@ admin.site.register(RegtFund)
 admin.site.register(QdFund)
 admin.site.register(OffrsMessFund)
 admin.site.register(JcoMessFund)
-admin.site.register(EmptyFund)
+admin.site.register(MTFund)
 admin.site.register(LRWFund)
 admin.site.register(OTFund)
 admin.site.register(REGTQMFund)

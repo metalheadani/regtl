@@ -17,7 +17,7 @@ class FpAndTgFundAdmin(admin.ModelAdmin):
 	list_display = ('serial_no','product_name','issued_to')
 
 
-class SavingsFundAdmin(admin.ModelAdmin):
+class MiscFundAdmin(admin.ModelAdmin):
 	search_fields = ['serial_no', 'product_name','issued_to','remarks']
 	list_display = ('serial_no','product_name','issued_to')
 
@@ -25,4 +25,4 @@ class SavingsFundAdmin(admin.ModelAdmin):
 admin.site.register(AtgFund)
 admin.site.register(AcgFund)
 admin.site.register(FpAndTgFund)
-admin.site.register(SavingsFund)
+admin.site.register(MiscFund)
